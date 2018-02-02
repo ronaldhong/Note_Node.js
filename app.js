@@ -16,7 +16,7 @@ console.log(user);
 // });
 ////
 /////LODASH TESTING
-// console.log(_.isString("Check"));
-// console.log(_.uniq(["Andrew","1","Andrew","2","3","1"]));
-console.log(process.argv);
+console.log(_.isString("Check"));
+console.log(_.uniq(["Andrew","1","Andrew","2","3","1"]));
+// console.log(process.argv);
 // console.log(note_list.add(1,3));
