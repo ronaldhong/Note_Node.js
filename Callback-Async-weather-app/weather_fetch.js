@@ -11,17 +11,11 @@ let weather=(lat, lng, callback)=>{
       callback("Unable to connect to Forecast.io server.")
     }else if(res.statusCode===400){
       // console.log(res.statusCode);
-      // console.log("Unable to fetch weather");
       callback(undefined, "Bad request. the location you enter is invlaid.")
     }else{
       // console.log(res.statusCode);
-      // console.log("200");
       callback(undefined, {weather: body.currently})
     }
-    // console.log(res.statusCode);
-    // callback(undefined,
-    //   {weather: body.currently}
-    // );
   })
 
 }
