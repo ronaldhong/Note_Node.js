@@ -24,8 +24,10 @@ let address = geocode.geocode(argv.address, (errorMessage, results)=>{
     console.log(JSON.stringify(results.address, undefined, 3))
     // console.log(results.lat);
     // console.log(results.lng);
-    let weather_address=weather.weather(results.lat, results.lng,(errorMessage, weather_results)=>{
-      console.log(JSON.stringify(weather_results, undefined, 3));
+    weather.weather(results.lat, results.lng,(errorMessage, weather_results)=>{
+      // console.log(JSON.stringify(weather_results, undefined, 3));
+      console.log(`The weather in ${results.address} is currently ${weather_results.weather.summary}`);
+      console.log(`Temperature: ${weather_results.weather.temperature}F`);
     })
     // console.log(JSON.stringify(results, undefined, 3));
   }
