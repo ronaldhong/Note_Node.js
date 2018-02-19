@@ -2,6 +2,7 @@ const geocode = require("../Callback-Async-weather-app/request.js")
 // const weather= require("./weather_fetch.js")
 const yargs = require("yargs");
 const axios = require('axios')
+let DARKSKY_API="2b0bcb62715d227f1296229fbbcc2dde";
 
 
 
@@ -29,11 +30,24 @@ axios.get(addressURL).then((response)=>{
     throw new Error("unable to find any result.")
   }
 
-  // let
-  console.log(response.data.results[0].geometry);
+  let lat;
+  let lng;
+  let weather_url;
+  let coordination;
+  lat = response.data.results[0].geometry.location.lat;
+  lng = response.data.results[0].geometry.location.lng;
+  // console.log(lat);
+  // console.log(lng);
+  coordination=`${lat},${lng}`
+  weather_url = `https://api.darksky.net/forecast/${DARKSKY_API}/${coordination}`
+  console.log(weather_url);
+  // console.log(response.data.results[0].geometry.location.lat);
+  return axios.get(weather_url)
 
 
   // console.log(response.data.status);
+}).then((response)=>{
+  console.log("Temperature is currently ",response.data.currently.temperature,"F");
 }).catch((error)=>{
   if (error.code=="ENOTFOUND"){
     console.log("Cannot connect to the server");
