@@ -7,8 +7,12 @@ let now = new Date();
 let WelcomeMessage = "welcome, user!"
 hbs.registerPartials(__dirname + "/views/partials")
 app.set('view engine', 'hbs');
-// app.use(express.static(__dirname + '/public'));
-// app.use(express.static('public'));
+app.use(express.static(__dirname + '/public'));
+
+///EXPRESS MIDDLEWARE EXAMPLE
+// app.use((req,res,next)=>{
+//   res.render("maintenance.hbs");
+// });
 
 hbs.registerHelper("currentTime",()=>{
   return dateFormat(now)
