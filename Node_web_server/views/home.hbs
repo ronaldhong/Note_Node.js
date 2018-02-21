@@ -5,8 +5,11 @@
     <title>Home</title>
   </head>
   <body>
-    <h1>Home Page</h1>
+    {{> header}}
+
     <a href="/about">To About</a>
     <h3>{{currentTime}}</h3>
+    <h3>{{screamIt WelcomeMessage}}</h3>
+    {{> footer}}
   </body>
 </html>

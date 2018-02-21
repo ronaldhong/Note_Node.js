@@ -4,15 +4,24 @@ let dateFormat = require('dateformat');
 let app = express();
 
 let now = new Date();
-
+let WelcomeMessage = "welcome, user!"
+hbs.registerPartials(__dirname + "/views/partials")
 app.set('view engine', 'hbs');
 // app.use(express.static(__dirname + '/public'));
 // app.use(express.static('public'));
+
+hbs.registerHelper("currentTime",()=>{
+  return dateFormat(now)
+})
+hbs.registerHelper("screamIt",(text)=>{
+  return text.toUpperCase();
+})
 app.get('/', (req,res)=>{
-  res.render('home.hbs', {
-    currentTime: dateFormat(now)
+  res.render('home.hbs',{
+    WelcomeMessage
   });
 });
+
 app.get('/about', (req, res)=>{
   res.render('about.hbs')
 })
